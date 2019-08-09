@@ -4,14 +4,16 @@ ZSH and Neovim installation and configuration.
 
 ## Installation
 
-First clone the repo.
+Please make sure you read the install script before you run it!
+Currnetly only works on `apt` based distros
 
-1. `cd dotfiles`
-2. `chmod +x install.sh`
-3. `./install.sh`
-4. Follow the instructions on screen
-5. Afer logging out and back in zplug will install all puggins
-6. Launch Neovim; `nvim`
+1. First clone the repo.
+2. `cd dotfiles`
+3. `chmod +x install.sh`
+4. `./install.sh`
+5. Follow the instructions on screen
+6. Afer logging out and back in zplug will install all puggins
+7. Launch Neovim; `nvim`
     * In Neovim `:PlugInstall`
 
 ## Usage
