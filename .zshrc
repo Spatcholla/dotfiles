@@ -149,3 +149,8 @@ function take ()
       cd -P -- "$1"
 }
 
+py-init() {
+    python3 -m venv venv
+    source venv/bin/activate
+    pip install -U pip setuptools jedi black neovim flake8 mypy
+}
