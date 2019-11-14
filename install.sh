@@ -13,8 +13,6 @@ cp .zshrc ~/.zshrc
 
 # Install Neovim
 sudo apt install -y software-properties-common
-sudo add-apt-repository ppa:neovim-ppa/stable
-sudo apt update
 sudo apt install -y neovim
 
 # Install Python modules for Neovim
