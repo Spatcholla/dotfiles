@@ -37,7 +37,7 @@ zplug "zsh-users/zsh-autosuggestions", \
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 # Tips for unused aliases
-zplug "djui/alias-tips"
+zplug "spatcholla/alias-tips"
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="💡  Try: "
 
 # Docker completions
@@ -83,6 +83,7 @@ zplug load
 export PATH=$HOME/.zplug/bin:$PATH
 
 # Environment
+alias ls='ls --color=auto'
 export EDITOR='nvim'
 export VISUAL='nvim'
 export PAGER='less'
@@ -114,28 +115,28 @@ export PATH=$HOME/.bin:$PATH
 # # Automatically launch a tmux session
 # if [[ -z "$TMUX" ]]; then
 #   tmux_session="$(echo $USER | tr -d '.')"
-# 
+#
 #   if tmux has-session -t "$tmux_session" 2>/dev/null; then
 #     tmux attach-session -t "$tmux_session"
 #   else
 #     tmux new-session -s "$tmux_session"
 #   fi
-# 
+#
 #   # if ! tmux has-session -t "$tmux_session" 2> /dev/null; then
 #   #   # Disable the destruction of unattached sessions globally.
 #   #   tmux set-option -g destroy-unattached off &> /dev/null
-# 
+#
 #   #   # Create a new session.
 #   #   tmux new-session -d -s "$tmux_session"
-# 
+#
 #   #   # Disable the destruction of the new, unattached session.
 #   #   tmux set-option -t "$tmux_session" destroy-unattached off &> /dev/null
-# 
+#
 #   #   # Enable the destruction of unattached sessions globally to prevent
 #   #   # an abundance of open, detached sessions.
 #   #   tmux set-option -g destroy-unattached on &> /dev/null
 #   # fi
-# 
+#
 #   # exec tmux new-session -t "$tmux_session"
 # fi
 
@@ -152,5 +153,5 @@ function take ()
 py-init() {
     python3 -m venv venv
     source venv/bin/activate
-    pip install -U pip setuptools jedi black neovim flake8 mypy
+    pip install -U pip setuptools jedi black neovim pylama
 }
