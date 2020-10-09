@@ -153,11 +153,7 @@ function take ()
 py-init() {
     python3 -m venv venv
     source venv/bin/activate
-<<<<<<< HEAD
     pip install -U pip setuptools jedi black neovim pylama 
-=======
-    pip install -U pip setuptools jedi black neovim pylama
->>>>>>> 7765e96218b0b8265ee05cfdabcdbac25942a945
 }
 
 eval $(thefuck --alias)
