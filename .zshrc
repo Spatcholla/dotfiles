@@ -115,28 +115,28 @@ export PATH=$HOME/.bin:$HOME/.local/bin:$PATH
 # # Automatically launch a tmux session
 # if [[ -z "$TMUX" ]]; then
 #   tmux_session="$(echo $USER | tr -d '.')"
-# 
+#
 #   if tmux has-session -t "$tmux_session" 2>/dev/null; then
 #     tmux attach-session -t "$tmux_session"
 #   else
 #     tmux new-session -s "$tmux_session"
 #   fi
-# 
+#
 #   # if ! tmux has-session -t "$tmux_session" 2> /dev/null; then
 #   #   # Disable the destruction of unattached sessions globally.
 #   #   tmux set-option -g destroy-unattached off &> /dev/null
-# 
+#
 #   #   # Create a new session.
 #   #   tmux new-session -d -s "$tmux_session"
-# 
+#
 #   #   # Disable the destruction of the new, unattached session.
 #   #   tmux set-option -t "$tmux_session" destroy-unattached off &> /dev/null
-# 
+#
 #   #   # Enable the destruction of unattached sessions globally to prevent
 #   #   # an abundance of open, detached sessions.
 #   #   tmux set-option -g destroy-unattached on &> /dev/null
 #   # fi
-# 
+#
 #   # exec tmux new-session -t "$tmux_session"
 # fi
 
@@ -153,7 +153,11 @@ function take ()
 py-init() {
     python3 -m venv venv
     source venv/bin/activate
+<<<<<<< HEAD
     pip install -U pip setuptools jedi black neovim pylama 
+=======
+    pip install -U pip setuptools jedi black neovim pylama
+>>>>>>> 7765e96218b0b8265ee05cfdabcdbac25942a945
 }
 
 eval $(thefuck --alias)

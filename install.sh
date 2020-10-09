@@ -31,7 +31,11 @@ mkdir -p ~/.config/nvim
 cp init.vim ~/.config/nvim/init.vim
 
 # Install Python modules
+<<<<<<< HEAD
 sudo python3 -m pip install -U pip 
+=======
+sudo python3 -m pip install -U pip setuptools neovim
+>>>>>>> 7765e96218b0b8265ee05cfdabcdbac25942a945
 
 echo "---------------------------"
 echo "RUN THE FOLLOWING COMMAND:"
