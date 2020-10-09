@@ -157,4 +157,3 @@ py-init() {
     pip install -U pip setuptools jedi black neovim pylama 
 }
 
-eval $(thefuck --alias)
