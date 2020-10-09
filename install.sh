@@ -16,7 +16,7 @@ sudo apt install -y software-properties-common
 sudo apt install -y neovim
 
 # Install Python modules for Neovim
-sudo apt install -y python-dev python-pip python3-dev python3-pip
+sudo apt install -y python3-dev python3-pip
 
 # Update editor to Neovim
 sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
@@ -31,7 +31,7 @@ mkdir -p ~/.config/nvim
 cp init.vim ~/.config/nvim/init.vim
 
 # Install Python modules
-sudo python3 -m pip install -U pip setuptools neovim black jedi flake8
+sudo python3 -m pip install -U pip 
 
 echo "---------------------------"
 echo "RUN THE FOLLOWING COMMAND:"

@@ -37,7 +37,7 @@ zplug "zsh-users/zsh-autosuggestions", \
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 # Tips for unused aliases
-zplug "djui/alias-tips"
+zplug "spatcholla/alias-tips"
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="💡  Try: "
 
 # Docker completions
@@ -83,6 +83,7 @@ zplug load
 export PATH=$HOME/.zplug/bin:$PATH
 
 # Environment
+alias ls='ls --color=auto'
 export EDITOR='nvim'
 export VISUAL='nvim'
 export PAGER='less'
@@ -109,7 +110,7 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Local bin directory
-export PATH=$HOME/.bin:$PATH
+export PATH=$HOME/.bin:$HOME/.local/bin:$PATH
 
 # # Automatically launch a tmux session
 # if [[ -z "$TMUX" ]]; then
@@ -152,5 +153,7 @@ function take ()
 py-init() {
     python3 -m venv venv
     source venv/bin/activate
-    pip install -U pip setuptools jedi black neovim flake8 mypy
+    pip install -U pip setuptools jedi black neovim pylama 
 }
+
+eval $(thefuck --alias)
