@@ -57,6 +57,10 @@ zplug 'modules/completion', from:prezto
 zplug 'modules/git', from:prezto
 zplug 'modules/tmux', from:prezto
 
+zstyle ':prezto:module:tmux:auto-start' local 'yes'
+zstyle ':prezto:module:tmux:session' name 'Samuel'
+zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+
 # Tmux
 alias tmux="tmux -f ${HOME}/.tmux.conf"
 
@@ -81,7 +85,10 @@ fi
 zplug load
 
 # Add zplug bin directory to PATH
-export PATH=$HOME/.zplug/bin:$PATH
+export PATH=$HOME/Library/Python/3.8/bin:$HOME/.zplug/bin:$PATH
+
+# Add user to Python path
+export PYTHONPATH=$HOME/Library/Python/3.8/bin:$PYTHONPATH
 
 # Environment
 alias ls='ls --color=auto'
@@ -113,33 +120,33 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Local bin directory
 export PATH=$HOME/.bin:$HOME/.local/bin:$PATH
 
-# # Automatically launch a tmux session
-# if [[ -z "$TMUX" ]]; then
-#   tmux_session="$(echo $USER | tr -d '.')"
+## Automatically launch a tmux session
+#if [[ -z "$TMUX" ]]; then
+#  tmux_session="$(echo $USER | tr -d '.')"
 #
-#   if tmux has-session -t "$tmux_session" 2>/dev/null; then
-#     tmux attach-session -t "$tmux_session"
-#   else
-#     tmux new-session -s "$tmux_session"
-#   fi
+#  if tmux has-session -t "$tmux_session" 2>/dev/null; then
+#    tmux attach-session -t "$tmux_session"
+#  else
+#    tmux new-session -s "$tmux_session"
+#  fi
 #
-#   # if ! tmux has-session -t "$tmux_session" 2> /dev/null; then
-#   #   # Disable the destruction of unattached sessions globally.
-#   #   tmux set-option -g destroy-unattached off &> /dev/null
+#  # if ! tmux has-session -t "$tmux_session" 2> /dev/null; then
+#  #   # Disable the destruction of unattached sessions globally.
+#  #   tmux set-option -g destroy-unattached off &> /dev/null
 #
-#   #   # Create a new session.
-#   #   tmux new-session -d -s "$tmux_session"
+#  #   # Create a new session.
+#  #   tmux new-session -d -s "$tmux_session"
 #
-#   #   # Disable the destruction of the new, unattached session.
-#   #   tmux set-option -t "$tmux_session" destroy-unattached off &> /dev/null
+#  #   # Disable the destruction of the new, unattached session.
+#  #   tmux set-option -t "$tmux_session" destroy-unattached off &> /dev/null
 #
-#   #   # Enable the destruction of unattached sessions globally to prevent
-#   #   # an abundance of open, detached sessions.
-#   #   tmux set-option -g destroy-unattached on &> /dev/null
-#   # fi
+#  #   # Enable the destruction of unattached sessions globally to prevent
+#  #   # an abundance of open, detached sessions.
+#  #   tmux set-option -g destroy-unattached on &> /dev/null
+#  # fi
 #
-#   # exec tmux new-session -t "$tmux_session"
-# fi
+#  # exec tmux new-session -t "$tmux_session"
+#fi
 
 # Use only noevim
 alias vim='nvim'
@@ -150,10 +157,3 @@ function take ()
     mkdir -p -- "$1" &&
       cd -P -- "$1"
 }
-
-py-init() {
-    python3 -m venv venv
-    source venv/bin/activate
-    pip install -U pip setuptools jedi black neovim pylama 
-}
-
