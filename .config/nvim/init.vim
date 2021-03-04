@@ -4,7 +4,8 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Color scheme
-Plug 'nanotech/jellybeans.vim'
+"Plug 'nanotech/jellybeans.vim'
+Plug 'arcticicestudio/nord-vim'
 
 " Git wrapper
 Plug 'tpope/vim-fugitive'
@@ -32,6 +33,7 @@ Plug 'mattn/emmet-vim'
 
 " Formater
 Plug 'Chiel92/vim-autoformat'
+Plug 'nvim-treesitter/nvim-treesitter'
 
 " Commenting
 Plug 'scrooloose/nerdcommenter'
@@ -98,12 +100,13 @@ nnoremap <space> za
 let g:SimpylFold_docstring_preview=1
 
 " ----- ALE -----
-let g:ale_lint_on_enter = 0
+let g:ale_lint_on_enter = 1
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_sign_column_always = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_linters = {'python': ['flake8']}
+let g:ale_linters = {'python': ['pylama', 'flake8']}
 
 " Navigate between errors
 nmap <silent> <S-h> <Plug>(ale_previous_wrap)
@@ -114,7 +117,7 @@ noremap <silent> <C-e> :ALEToggle<CR>
 
 " ----- LIGHTLINE -----
 let g:lightline = {
-			\ 'colorscheme': 'jellybeans',
+			\ 'colorscheme': 'nord',
 			\ 'active': {
 			\   'left': [ [ 'mode', 'paste' ],
 			\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
@@ -137,6 +140,12 @@ let g:lightline = {
 			\   'linter_ok': 'left',
 			\ }
 			\ }
+let g:lightline.separator = {
+	\   'left': '', 'right': ''
+  \}
+let g:lightline.subseparator = {
+	\   'left': '', 'right': '' 
+  \}
 
 " ----- INDENTATION -----
 " Python
@@ -195,6 +204,20 @@ augroup END
 " ----- VIM-AUTOFORMAT -----
 noremap <F3> :Autoformat<CR>
 
+" ----- TREESITTER -----
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = {},  -- list of language that will be disabled
+  },
+  indent = {
+    enable = true
+  }
+}
+EOF
+
 " ----- USER SETTINGS -----
 " Enable split
 set splitbelow
@@ -227,19 +250,20 @@ set smartcase
 " UI configuration
 syntax on
 syntax enable
-set t_Co=256
+"set t_Co=256
 set laststatus=2
 
 " colorscheme
-colorscheme jellybeans
+"colorscheme jellybeans
+colorscheme nord
 
 " True Color Support if it's avaiable in terminal
-if has("termguicolors")
-	set termguicolors
-endif
-if has("gui_running")
-	set guicursor=n-v-c-sm:block,i-ci-ve:block,r-cr-o:blocks
-endif
+"if has("termguicolors")
+"	set termguicolors
+"endif
+"if has("gui_running")
+"	set guicursor=n-v-c-sm:block,i-ci-ve:block,r-cr-o:blocks
+"endif
 
 au FocusGained * if &autoread | silent checktime | endif
-
+au ColorScheme * hi Normal ctermbg=None
