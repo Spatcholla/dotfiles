@@ -30,6 +30,9 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 # Copy config directory
 cp -r .config ~/
 
+# Copy tmux configuration file
+cp .tmux.conf ~/
+
 # Install Python modules
 sudo python3 -m pip install -U pip setuptools neovim
 
